@@ -30,7 +30,7 @@ var OrderSchema = new mongoose.Schema({
 });
 
 /**
- * schema method used to save  a single order
+ * schema method used to save a single order
  */
 
 OrderSchema.methods.saveOrder= function(product) {
@@ -45,7 +45,7 @@ OrderSchema.methods.saveOrder= function(product) {
 
 
 /**
- * Find a  Order
+ * Find order 
  */
 OrderSchema.methods.findOrder = function(userId) {
   return Order.find({customerId:userId}).then((orderData) => { 
@@ -58,7 +58,7 @@ OrderSchema.methods.findOrder = function(userId) {
 }
 
 /**
- * User to filter Object
+ * Used to filter Object
  */
 
 OrderSchema.methods.toJSON = function () {

@@ -6,7 +6,7 @@ const {Product} = require('./Product');
 
 
 /**
-* API used to post user jobs
+* API used to save product
 */
 router.post('/petProduct', function(req, res) {
   const body = _.pick(req.body,['id','name','price']);
