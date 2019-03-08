@@ -67,18 +67,6 @@ OrderSchema.methods.toJSON = function () {
   return _.pick(orderObject,['productId','quantity','totalCost']);
 };
 
-OrderSchema.methods.fetchProduct = function(productId) {
- return fetch(`${process.env.FETCH_PRODUCTS_API}/${productId}`).then((res) => {// fetch all the products 
-    if(res.status == 200) {
-        return res.json();
-    } else {
-        console.log("unable to fetch products");
-    }
-    }).then((resData) => {
-       return resData
-    });
-}
-
 
 const Order = mongoose.model('Order', OrderSchema);
 module.exports = { Order };
