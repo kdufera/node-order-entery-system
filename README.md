@@ -10,10 +10,11 @@ This application incorporates RESTful API's that can receive an order with a cus
 * MongoDB is required for this project 
     * run 'nongod' 
 
-* Clone the repo 
+* Clone the repo and install NPM libraries 
     * run 'npm install'
 
-* run 'node .' or 'nodmon .'
+* Run the App
+    *  'node .' or 'nodmon .'
 
 
 # Main API's
