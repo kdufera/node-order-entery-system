@@ -50,6 +50,21 @@ ProductSchema.methods.findProduct = function(productId) {
   })
 }
 
+
+/**
+ * Clear Products table
+ */
+ProductSchema.methods.clearTable = function() {
+  return Product.remove({}).then((res) => { 
+    if(res) {
+      return Promise.resolve(res);
+    } else {
+      return Promise.reject("Unable to find product");
+    }
+  })
+}
+
+
 /**
  * Filter product Object
  */
@@ -57,7 +72,7 @@ ProductSchema.methods.findProduct = function(productId) {
 ProductSchema.methods.toJSON = function () {
   var product = this;
   var productObject = product.toObject();
-  return _.pick(productObject,['id','name','price']);
+  return _.pick(productObject,['name','price']);
 };
 
 

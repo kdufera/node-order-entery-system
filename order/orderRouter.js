@@ -52,7 +52,6 @@ router.get('/orderSummery/:id', function(req, res) {
 				let total = 0;
 				if(orderData) {
 					var productUrl= [];
-					var  orderDetail = [];
 					orderData.forEach(function(element) {
 						total = total + parseFloat(element.totalCost);
 						productUrl.push(`${process.env.FETCH_PRODUCTS_API}/${element.productId}`);
@@ -70,7 +69,7 @@ router.get('/orderSummery/:id', function(req, res) {
 						}
 						summery.push(userData);
 						summery.push({total});
-						res.status(200).send(summery);
+						res.status(200).send({summery});
 					});
 				} 
 			}).catch((err) => {

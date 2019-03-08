@@ -25,6 +25,25 @@ router.post('/petProduct', function(req, res) {
     });
 });
 
+/**
+* API used clear Products table 
+*/
+
+router.post('/clearDb/:id', function(req, res) {
+    if(req.params.id == process.env.CLEARDB_PASS) {
+      let product = new Product();
+      product.clearTable().then((respData) => {
+        if(respData) {
+          res.status(200).send("cleared");
+        } 
+      }).catch((err) => {
+          res.status(500).send();
+      });
+    } else {
+      res.status(401).send();
+    }
+});
+
 
 /**
  * API to get a single product
@@ -39,8 +58,6 @@ router.get('/petProduct/:id', function(req, res) {
           res.status(500).send();
        });
   })
-
-
 
 
 module.exports = router;

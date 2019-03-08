@@ -1,31 +1,14 @@
 require('../config/config');
 let chai = require('chai');
 let chaiHttp = require('chai-http');
+let server = require('../server');
+let should = chai.should();
 chai.use(chaiHttp);
 
-
+/*
+ * Products API test
+*/
 describe('Products', () => {
-
-	/*
-	 * Test the /GET route
-	 */
-	//  describe('/POST product', () => {
-	//     it('it should GET all the books', (done) => {
-	//       chai.request(server)
-	//           .get('/book')
-	//           .end((err, res) => {
-	//                 res.should.have.status(200);
-	//                 res.body.should.be.a('array');
-	//                 res.body.length.should.be.eql(0);
-	//             done();
-	//           });
-	//     });
-	// });
-
-
-	/*
-	 * Test the /POST route
-	 */
 	describe('POST Product', () => {
 		it('it should POST a single product', (done) => {
 			let token = {
@@ -70,12 +53,41 @@ describe('Products', () => {
 			.set('Content-Type', 'application/json')
 			.end((err, res) => {
 				res.should.have.status(500);
-				// res.body.should.be.a('object');
-				// res.body.should.have.property('errors');
-				// res.body.errors.should.have.property('pages');
-				// res.body.errors.pages.should.have.property('kind').eql('required');
 				done();
 			});
 		});
-	});
+    });
+    
+    describe('GET Product', () => {
+        it('it should GET a single product', (done) => {
+			chai.request(process.env.LOCALHOST_PRODUCT_API)
+			.get('/34343ded')
+			.end((err, res) => {
+				res.should.have.status(200);
+				done();
+			});
+        });
+
+        it('it should not GET a single product', (done) => {
+			chai.request(process.env.LOCALHOST_PRODUCT_API)
+			.get('/34343de')
+			.end((err, res) => {
+				res.should.have.status(500);
+				done();
+			});
+        });
+    });
+
+    describe('DELETE Product', () => {
+        it('it should DELETE ALL product', (done) => {
+			chai.request(process.env.CLEARDB_API)
+			.post('/')
+			.send("")
+			.set('Content-Type', 'application/json')
+			.end((err, res) => {
+				res.should.have.status(200);
+				done();
+			});
+		});
+    });
 });
