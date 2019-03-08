@@ -21,27 +21,27 @@ app.use(express.json());
 
 
  //fetch data from API ( Initial load)
-//  fetch(process.env.PRODUCTS_API).then((res) => {
-//      if(res.status == 200) {
-//          return res.json();
-//      } else {
-//          console.log("unable to fetch products");
-//      } 
-//  }).then((resProducts) => {
-//       resProducts.body.forEach(function(element) {
-//         fetch(process.env.FETCH_PRODUCTS_API, {
-//             method: 'post',
-//             body:    JSON.stringify(element),
-//             headers: { 'Content-Type': 'application/json' },
-//         }).then((res) => {
-//             if(res.status != 200) {
-//                 console.log("unable to save products");
-//             } else {
-//                 // console.log("saved products to DB");
-//             }
-//         });
-//      });
-// });
+ fetch(process.env.PRODUCTS_API).then((res) => {
+     if(res.status == 200) {
+         return res.json();
+     } else {
+         console.log("unable to fetch products");
+     } 
+ }).then((resProducts) => {
+      resProducts.body.forEach(function(element) {
+        fetch(process.env.FETCH_PRODUCTS_API, {
+            method: 'post',
+            body:    JSON.stringify(element),
+            headers: { 'Content-Type': 'application/json' },
+        }).then((res) => {
+            if(res.status != 200) {
+                console.log("unable to save products");
+            } else {
+                // console.log("saved products to DB");
+            }
+        });
+     });
+});
  
 
 

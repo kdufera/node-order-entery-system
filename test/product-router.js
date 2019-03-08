@@ -1,17 +1,6 @@
 require('../config/config');
-const express = require('express');
 let chai = require('chai');
 let chaiHttp = require('chai-http');
-let server = require('../server');
-// let product = require('../product/product')
-let ProductRouter = require('../product/productRouter');
-let should = chai.should();
-
-const app = express();
-
-
-
-
 chai.use(chaiHttp);
 
 
@@ -69,8 +58,6 @@ describe('Products', () => {
 				done();
 			});
 		});
-
-
 
 		it('it should not POST product', (done) => {
 			let token = {
