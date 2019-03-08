@@ -21,7 +21,7 @@ router.post('/petProduct', function(req, res) {
         res.status(200).send("Saved");
       } 
     }).catch((err) => {
-        res.status(401).send("");
+        res.status(500).send();
     });
 });
 
@@ -36,7 +36,7 @@ router.get('/petProduct/:id', function(req, res) {
           res.status(200).send(productData);
       } 
       }).catch((err) => {
-          res.status(200).send("err");
+          res.status(500).send();
        });
   })
 

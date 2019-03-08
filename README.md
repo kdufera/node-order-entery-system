@@ -14,8 +14,10 @@ This application incorporates RESTful API's that can receive an order with a cus
     * run 'npm install'
 
 * Run the App
-    *  'node .' or 'nodmon .'
-
+    *  'npm run start'
+    
+* Run test 
+    * 'npm run test'
 
 # Main API's
 
@@ -26,8 +28,8 @@ Get order summery:
 Get Single Product:
 *  http://localhost:3000/product/v1/petProduct/8ed0e6f7
 
-    {
-        "name": "",
+    {   "id": "c0258525"
+        "name": " ",
         "price": ""
     }
 

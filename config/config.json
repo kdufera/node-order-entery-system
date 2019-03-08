@@ -3,6 +3,8 @@
     "PORT": 3000,
     "MONGODB_URI": "mongodb://localhost:27017/orderEntry",
     "PRODUCTS_API": "https://vrwiht4anb.execute-api.us-east-1.amazonaws.com/default/product",
-    "FETCH_PRODUCTS_API": "http://localhost:3000/product/v1/petProduct" 
+    "FETCH_PRODUCTS_API": "http://localhost:3000/product/v1/petProduct",
+    "LOCALHOST_PRODUCT_API": "http://localhost:3000/product/v1/petProduct"
+
   }
 }

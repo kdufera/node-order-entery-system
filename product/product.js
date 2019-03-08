@@ -57,7 +57,7 @@ ProductSchema.methods.findProduct = function(productId) {
 ProductSchema.methods.toJSON = function () {
   var product = this;
   var productObject = product.toObject();
-  return _.pick(productObject,['name','price']);
+  return _.pick(productObject,['id','name','price']);
 };
 
 
