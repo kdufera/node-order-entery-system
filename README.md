@@ -19,7 +19,7 @@ This application incorporates RESTful API's that can receive an order with a cus
 # Main API's
 
 Get order summery:
-* http://localhost:3000/order/v1/orderSummery/
+* http://localhost:3000/order/v1/orderSummery/123456
 
     
 Get Single Product:
