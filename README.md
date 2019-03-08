@@ -7,8 +7,8 @@ This application incorporates RESTful API's that can receive an order with a cus
 
 # Instruction 
  
-* MongoDB is required for this project 
-    * run 'nongod' 
+* mongoDBis required for this project 
+    * run 'mongod' 
 
 * Clone the repo and install NPM libraries 
     * run 'npm install'
