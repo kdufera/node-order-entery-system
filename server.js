@@ -7,7 +7,6 @@ const fetch = require('node-fetch'); // fetch data for initial product load
 const productRoter = require('./product/productRouter');
 const orderRoter = require('./order/orderRouter');
 
-
 app.set('port', (process.env.PORT || 3000));
 app.use(express.json());
 
@@ -19,38 +18,27 @@ app.use('/product/v1', productRoter);
 app.use('/order/v1', orderRoter); 
 
 
-// Clear products talbe and fetch and save data
-fetch(process.env.CLEARDB_API, {
-	method: 'post',
-	body:    "",
-	headers: { 'Content-Type': 'application/json' },
-}).then((res) => {
+//fetch data from API (Initial load)
+fetch(process.env.PRODUCTS_API).then((res) => {
 	if(res.status == 200) {
-		//fetch data from API ( Initial load)
-		fetch(process.env.PRODUCTS_API).then((res) => {
-			if(res.status == 200) {
-				return res.json();
-			} else {
-				console.log("unable to fetch products");
-			} 
-		}).then((resProducts) => {
-			resProducts.body.forEach(function(element) {
-				fetch(process.env.FETCH_PRODUCTS_API, {
-					method: 'post',
-					body:    JSON.stringify(element),
-					headers: { 'Content-Type': 'application/json' },
-				}).then((res) => {
-					if(res.status != 200) {
-						console.log("unable to save products");
-					} else {
-						console.log("saved products to DB");
-					}
-				});
-			});
-		});
+		return res.json();
 	} else {
-		console.log("unable to clear products table");
-	}
+		console.log("unable to fetch products");
+	} 
+}).then((resProducts) => {
+	resProducts.body.forEach(function(element) {
+		fetch(process.env.FETCH_PRODUCTS_API, {
+			method: 'post',
+			body:    JSON.stringify(element),
+			headers: { 'Content-Type': 'application/json' },
+		}).then((res) => {
+			if(res.status != 200) {
+				console.log("unable to save products");
+			} else {
+				console.log("saved products to DB");
+			}
+		});
+	});
 });
 
 

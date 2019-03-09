@@ -11,29 +11,41 @@ fetch.Promise = Bluebird;
  * API used to post order
  */
 router.post('/userOrder', function(req, res) {
-
 	var customerId = req.body.customerId;
-	req.body.items.forEach(function(element) {
+	req.body.items.forEach(function(element) { // loop through items array 
 		var body = _.pick(element,['productId','quantity']);
+		
 		fetch(`${process.env.FETCH_PRODUCTS_API}/${body.productId}`)
 		.then((resDataOne) => { 
 			if(resDataOne.status == 200) {
 				return resDataOne.json() 
 			} else {
-				res.status(200).send(""); 
+				res.status(500).send("Unable to fetch data"); 
 			}
 		})
 		.then((resDataTwo) => {
-			console.log(resDataTwo)
 			let totalCost =  parseFloat(resDataTwo.price) * parseFloat(body.quantity);
+
+			if( (customerId == "") || (body.productId == "" ) || (body.quantity == "")){
+
+				res.status(500).send("Unable to fetch data"); 
+
+			} else  {
+
+		
 			let order = new Order({customerId:customerId, productId:body.productId, quantity:body.quantity, totalCost:totalCost});
+
 			order.saveOrder(order).then((resData) => {
 				if(resData) {
 					res.status(200).send(`${customerId} order saved.`);
-				} 
+				} else {
+					res.status(500).send("Unable to fetch data"); 
+
+				}
 			})
+		}
 		}).catch((err) => {
-			res.status(200).send("");
+			res.status(500).send("");
 		});
 	});
 });
@@ -47,7 +59,6 @@ router.post('/userOrder', function(req, res) {
 router.get('/orderSummery/:id', function(req, res) {
 	let order = new Order();
 	var summery = []
-
 			order.findOrder(req.params.id).then((orderData) => {
 				let total = 0;
 				if(orderData) {
@@ -64,7 +75,7 @@ router.get('/orderSummery/:id', function(req, res) {
 						return r.json()
 					}))).then((userData) =>  {
 						var i;
-						for (i = 0; i < userData.length; i++) { 
+						for (i = 0; i < userData.length; i++) { // addd quantity to summery 
 							userData[i].quantity = orderData[i].quantity;
 						}
 						summery.push(userData);
@@ -73,7 +84,7 @@ router.get('/orderSummery/:id', function(req, res) {
 					});
 				} 
 			}).catch((err) => {
-				res.status(200).send("");
+				res.status(500).send("");
 			});
 })
 

@@ -14,10 +14,10 @@ This application incorporates RESTful API's that can receive an order with a cus
     * run 'npm install'
 
 * Run the App
-    *  'npm run start'
+    *  'npm start'
     
 * Run test 
-    * 'npm run test'
+    * 'npm test'
 
 # Main API's
 
@@ -25,7 +25,7 @@ Get order summery:
 * http://localhost:3000/order/v1/orderSummery/123456
 
     
-Get Single Product:
+Get a single product:
 *  http://localhost:3000/product/v1/petProduct/8ed0e6f7
 
     {   "id": "c0258525"
@@ -34,7 +34,7 @@ Get Single Product:
     }
 
 
-POST a single Product:
+POST a single product:
 * http://localhost:3000/product/v1/petProduct
 
     {
@@ -43,7 +43,7 @@ POST a single Product:
         "price": 0
     }
 
-POST a Single Order:
+POST an order:
 * http://localhost:3000/order/v1/userOrder
 
     {
