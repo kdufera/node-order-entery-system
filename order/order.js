@@ -48,6 +48,7 @@ OrderSchema.methods.saveOrder= function(product) {
  * Find order 
  */
 OrderSchema.methods.findOrder = function(userId) {
+
   return Order.find({customerId:userId}).then((orderData) => { 
         if(orderData) {
           return Promise.resolve(orderData);

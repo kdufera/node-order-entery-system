@@ -6,12 +6,13 @@ let should = chai.should();
 chai.use(chaiHttp);
 var expect = chai.expect;
 
+
 /*
  * Products API test
 */
 
 describe('ORDER ROUTE TEST', () => {
-
+	
 	describe('POST ORDER TEST', () => {
 
 		it('it should POST an order with multiple products', (done) => {
@@ -19,16 +20,12 @@ describe('ORDER ROUTE TEST', () => {
                 customerId: '123456',
                 items: [
                   {
-                    productId: '8ed0e6f7',
+                    productId: 'b32e16b5',
                     quantity: 8
 				  },
 				  {
-                    productId: '8ed0e6f7',
+                    productId: 'f020e7e0',
                     quantity: 12
-				  },
-				  {
-                    productId: '8ed0e6f7',
-                    quantity: 9
 				  }
                 ]
 			}
@@ -45,10 +42,10 @@ describe('ORDER ROUTE TEST', () => {
 		
 		it('it should POST a single order', (done) => {
 			let token = {
-                customerId: '1234',
+                customerId: '1234567',
                 items: [
                   {
-                    productId: '8ed0e6f7',
+                    productId: 'b32e16b5',
                     quantity: 8
 				  }
                 ]
@@ -129,7 +126,7 @@ describe('ORDER ROUTE TEST', () => {
 	});
 	
 	describe('GET ORDER TEST', () => {
-
+	
 		it('it should GET a single order', (done) => {
 			chai.request(process.env.LOCALHOST_ORDER_SUMMERY_API)
 			.get('/123456')
@@ -138,17 +135,16 @@ describe('ORDER ROUTE TEST', () => {
 				res.should.have.status(200);
 				done();
 			});
-        });
-        
-        it('it should GET a single order', (done) => {
+		});
+		it('it should GET a single order', (done) => {
 			chai.request(process.env.LOCALHOST_ORDER_SUMMERY_API)
-			.get('/1234')
+			.get('/1234567')
 			.end((err, res) => {
                 expect(err).to.be.null;
 				res.should.have.status(200);
 				done();
 			});
-		});
+        });
 
 	});
 });

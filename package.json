@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "./node_modules/.bin/mocha"
-  },
+    "test": "nodemon --exec 'mocha -R min'" 
+   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kdufera/Node_Order_Entery_System.git"

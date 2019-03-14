@@ -35,7 +35,6 @@ fetch(process.env.PRODUCTS_API).then((res) => {
 			if(res.status != 200) {
 				console.log("unable to save products");
 			} else {
-				console.log("saved products to DB");
 			}
 		});
 	});

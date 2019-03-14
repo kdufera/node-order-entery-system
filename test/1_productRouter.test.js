@@ -12,14 +12,15 @@ var expect = chai.expect;
 */
 describe('PRODUCT ROUTE TEST', () => {
 
+
 	describe('POST Product', () => {
 		it('it should POST a single product', (done) => {
 		
 			chai.request(process.env.LOCALHOST_PRODUCT_API)
 			.post('/')
 			.send({
-				id: '8ed0e6f7',
-				name: 'leash',
+				id: '8ed0e634',
+				name: 'other-product',
 				price: '9.99'
 		})
 			.set('Content-Type', 'application/json')
@@ -47,7 +48,7 @@ describe('PRODUCT ROUTE TEST', () => {
 			});
         });
         
-        it('it should not POST product id', (done) => {
+        it('it should not POST product with missing id', (done) => {
 			let token = {
                     name: 'leash',
                     price: 34
@@ -67,7 +68,7 @@ describe('PRODUCT ROUTE TEST', () => {
     describe('GET Product', () => {
         it('it should GET a single product', (done) => {
 			chai.request(process.env.LOCALHOST_PRODUCT_API)
-			.get('/8ed0e6f7')
+			.get('/8ed0e634')
 			.set('Accept', 'application/json')
 			.end((err, res) => {
 				expect(err).to.be.null;
