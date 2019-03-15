@@ -4,7 +4,7 @@ const https = require('https');
 
 
 /**
-* Products mongoose schema
+* Order mongoose schema
 */
 
 
