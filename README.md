@@ -1,6 +1,6 @@
 
 
-# PRODUCT_ORDER_ENTRY_SYSTEM
+# Product order entry system
 
 This application incorporates RESTful API's that can receive an order with a customer number and the product IDs and quantities of the items ordered. The application initially calls an established inventory API to get a list of product name and price. An order can be placed and retrieved via the API's specified below.
 
