@@ -23,7 +23,7 @@
     "chai-http": "^4.2.1",
     "express": "^4.16.4",
     "mocha": "^6.0.2",
-    "mongoose": "^5.0.10",
+    "mongoose": "^5.7.5",
     "node-fetch": "^2.3.0",
     "supertest": "^3.4.2"
   },
