@@ -21,7 +21,7 @@
     "bluebird": "^3.5.3",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "mocha": "^6.0.2",
     "mongoose": "^5.0.10",
     "node-fetch": "^2.3.0",
